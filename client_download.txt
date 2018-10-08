@@ -1,0 +1,6 @@
+#Anyconnect Client for windows system
+http://180.188.197.212/down/anyconnect/anyconnect-win-4.6.01098-core-vpn-predeploy-k9.msi
+#Anyconnect Client for osx
+http://180.188.197.212/down/anyconnect/anyconnect-macos-4.6.02074-predeploy-k9.dmg
+#Anyconnect Client for andriod
+http://180.188.197.212/down/anyconnect/anyconnect-v4.6.00143.apk
