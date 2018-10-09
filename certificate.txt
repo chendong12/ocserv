@@ -1,0 +1,19 @@
+#新增证书用户之前的服务器配置
+yum install httpd -y
+service httpd start
+iptables -I INPUT -p udp --dport 80 -j ACCEPT
+echo 'iptables -A INPUT -p udp --dport 4433 -j ACCEPT' >> /etc/rc.local
+
+#新增证书用户
+cd /root/anyconnect
+mkdir zhangsan
+cd zhangsan
+../gen-client-cert.sh zhangsan /root/anyconnect
+cp zhangsan.p12 /var/www/html/
+
+#获取证书地址
+http://35.229.201.111/zhangsan.p12
+
+
+#新增密码登陆用户,其中zhangsan是用户名
+ocpasswd -c /etc/ocserv/ocpasswd zhangsan
