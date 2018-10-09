@@ -1,7 +1,7 @@
 #新增证书用户之前的服务器配置
 yum install httpd -y
 service httpd start
-iptables -I INPUT -p udp --dport 80 -j ACCEPT
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 echo 'iptables -A INPUT -p tcp --dport 80 -j ACCEPT' >> /etc/rc.local
 
 #新增证书用户
