@@ -51,7 +51,7 @@ cp server-cert.pem /etc/ocserv/
 cp server-key.pem /etc/ocserv/
 #生成客户端证书可以让客户端通过证书登录
 cd /root/anyconnect
-wget https://raw.githubusercontent.com/zhuchunmao/udp2raw_wireguard_ocserv/master/n/gen-client-cert.sh
+wget https://raw.githubusercontent.com/chendong12/ocserv/master/gen-client-cert.sh
 chmod +x gen-client-cert.sh
 mkdir jack
 cd jack
@@ -60,7 +60,7 @@ cd jack
 #配置 ocserv
 cd /etc/ocserv/
 rm -rf ocserv.conf
-wget https://raw.githubusercontent.com/zhuchunmao/udp2raw_wireguard_ocserv/master/n/ocserv.conf
+wget https://raw.githubusercontent.com/chendong12/ocserv/master/ocserv.conf
 #4. 创建用户－以用户名密码方式登陆
 expect<<-END
 spawn ocpasswd -c /etc/ocserv/ocpasswd jack
