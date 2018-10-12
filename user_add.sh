@@ -11,7 +11,7 @@ function input_user() {
 	if  [ ! -n "$user_pass" ] ;then
     echo "您没有输入密码"
     else
-    useradd
+    user_add
     cert_add
     fi
 
