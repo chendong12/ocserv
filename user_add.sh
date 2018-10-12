@@ -1,15 +1,15 @@
 #!/bin/bash
-#ocserv 增加用户及证书的脚本文件，通过该脚本增加用户的同时增加了该用户的证书
+#ocserv Add a script file for the user and the certificate, and add the user's certificate by adding the user through the script.
 function input_user() {
 	public_ip=`lynx --source www.monip.org | sed -nre 's/^.* (([0-9]{1,3}\.){3}[0-9]{1,3}).*$/\1/p'`
 	read -p "Input your vpn username:" user_name
 	if  [ ! -n "$user_name" ] ;then
     echo "You did not enter a username, please re-execute the program"
     else
-	read -p "请输入密码！:" user_pass	
+	read -p "Input your password:" user_pass	
 	fi
 	if  [ ! -n "$user_pass" ] ;then
-    echo "您没有输入密码"
+    echo "You did not enter your password, please re-execute the program"
     else
     user_add
     cert_add
@@ -42,10 +42,10 @@ expect eof
 exit
 END
 cp /root/anyconnect/$user_name/$user_name.p12 /var/www/html/
-echo "$user_name 用户创建成功,密码为$user_pass"
-echo "$user_name 用户的证书创建成功,请访问下面地址进行证书下载或导入"
+echo "$user_name The user is successfully created and the password is $user_pass"
+echo "$user_name The user's certificate was created successfully. Please visit the following address for certificate download or import."
 echo "http://$public_ip/$user_name.p12"  
-echo "证书的导入密码为$user_pass"
+echo "The import password for the certificate is $user_pass"
 }
 function shell_install() {
 	input_user
