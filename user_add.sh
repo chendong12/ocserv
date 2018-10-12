@@ -2,9 +2,9 @@
 #ocserv 增加用户及证书的脚本文件，通过该脚本增加用户的同时增加了该用户的证书
 function input_user() {
 	public_ip=`lynx --source www.monip.org | sed -nre 's/^.* (([0-9]{1,3}\.){3}[0-9]{1,3}).*$/\1/p'`
-	read -p "请输入要创建的用户名称！(英文格式):" user_name
+	read -p "Input your vpn username:" user_name
 	if  [ ! -n "$user_name" ] ;then
-    echo "您没有输入用户名，请重新执行程序"
+    echo "You did not enter a username, please re-execute the program"
     else
 	read -p "请输入密码！:" user_pass	
 	fi
