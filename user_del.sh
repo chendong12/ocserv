@@ -1,6 +1,6 @@
 #!/bin/bash
 #ocserv 删除用户及注销用户的证书的脚本文件
-function input_user() {
+function user_del() {
     read -p "请输入要删除的用户名称！(英文格式):" user_name
     if  [ ! -n "$user_name" ] ;then
     echo "您没有输入用户名，请重新执行程序"
@@ -13,4 +13,4 @@ function input_user() {
     service ocserv restart
 	fi
 }
-shell_install
+user_del
