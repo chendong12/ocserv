@@ -49,7 +49,7 @@ certtool --generate-certificate --load-privkey server-key.pem \
 --template server.tmpl --outfile server-cert.pem
 cp server-cert.pem /etc/ocserv/
 cp server-key.pem /etc/ocserv/
-#
+#生成证书注销文件
 cd /root/anyconnect/
 touch /root/anyconnect/revoked.pem
 cd /root/anyconnect/
@@ -60,28 +60,18 @@ _EOF_
 certtool --generate-crl --load-ca-privkey ca-key.pem \
            --load-ca-certificate ca-cert.pem \
            --template crl.tmpl --outfile crl.pem
-#生成客户端证书可以让客户端通过证书登录
-cd /root/anyconnect
-wget https://raw.githubusercontent.com/chendong12/ocserv/master/gen-client-cert.sh
-chmod +x gen-client-cert.sh
-mkdir jack
-cd jack
-#../gen-client-cert.sh jack /root/anyconnect
-#最后，通过 http 服务器或其他方式将 jack.p12 传输给客户端导入即可
 #配置 ocserv
 cd /etc/ocserv/
 rm -rf ocserv.conf
 wget https://raw.githubusercontent.com/chendong12/ocserv/master/ocserv.conf
-#4. 创建用户－以用户名密码方式登陆
-expect<<-END
-spawn ocpasswd -c /etc/ocserv/ocpasswd jack
-expect "Enter password:"
-send "pass_jack\r"
-expect "Re-enter password:"
-send "pass_jack\r"
-expect eof
-exit
-END
+#
+cd /root/anyconnect
+wget https://raw.githubusercontent.com/chendong12/ocserv/master/gen-client-cert.sh
+wget https://raw.githubusercontent.com/chendong12/ocserv/master/user_add.sh
+https://raw.githubusercontent.com/chendong12/ocserv/master/user_del.sh
+chmod +x gen-client-cert.sh
+chmod +x user_add.sh
+chmod +x user_del.sh
 }
 function 7_iptables_init(){
 echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
