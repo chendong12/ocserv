@@ -5,7 +5,7 @@ function input_user() {
     if  [ ! -n "$user_name" ] ;then
     echo "您没有输入用户名，请重新执行程序"
     else
-    ocpasswd -d $user_name
+    /usr/bin/ocpasswd -d $user_name
     echo "$user_name 用户删除成功"
     cat /root/anyconnect/$user_name/$user_name-cert.pem >> /root/anyconnect/revoked.pem
     certtool --generate-crl --load-ca-privkey ca-key.pem  --load-ca-certificate ca-cert.pem --load-certificate revoked.pem  --template crl.tmpl --outfile crl.pem
