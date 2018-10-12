@@ -76,15 +76,19 @@ function 7_iptables_init(){
 echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
 sysctl -p
 systemctl start iptables
+yum install httpd -y
+service httpd start
 chmod +x /etc/rc.local
 cat >>  /etc/rc.local <<EOF
 systemctl start ocserv
 systemctl start iptables
+systemctl start httpd
 iptables -F
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -p icmp -j ACCEPT
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 4433 -j ACCEPT
 iptables -A INPUT -p udp --dport 4433 -j ACCEPT
 iptables -A INPUT -j DROP
