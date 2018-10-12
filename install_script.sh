@@ -49,6 +49,17 @@ certtool --generate-certificate --load-privkey server-key.pem \
 --template server.tmpl --outfile server-cert.pem
 cp server-cert.pem /etc/ocserv/
 cp server-key.pem /etc/ocserv/
+#
+cd /root/anyconnect/
+touch /root/anyconnect/revoked.pem
+cd /root/anyconnect/
+cat << _EOF_ >crl.tmpl
+crl_next_update = 365
+crl_number = 1
+_EOF_
+certtool --generate-crl --load-ca-privkey ca-key.pem \
+           --load-ca-certificate ca-cert.pem \
+           --template crl.tmpl --outfile crl.pem
 #生成客户端证书可以让客户端通过证书登录
 cd /root/anyconnect
 wget https://raw.githubusercontent.com/chendong12/ocserv/master/gen-client-cert.sh
