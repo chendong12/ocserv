@@ -1,5 +1,5 @@
 #!/bin/bash
-#ocserv Add a script file for the user and the certificate, and add the user's certificate by adding the user through the script.
+#This script is add vpn user and user's certificate at the same time
 function input_user() {
 	public_ip=`lynx --source www.monip.org | sed -nre 's/^.* (([0-9]{1,3}\.){3}[0-9]{1,3}).*$/\1/p'`
 	read -p "Input your vpn username:" user_name
