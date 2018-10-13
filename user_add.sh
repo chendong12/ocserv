@@ -43,9 +43,10 @@ exit
 END
 cp /root/anyconnect/$user_name/$user_name.p12 /var/www/html/
 echo "$user_name The user is successfully created and the password is $user_pass"
-echo "$user_name The user's certificate was created successfully. Please visit the following address for certificate download or import."
+echo "$user_name The user's certificate was created successfully. Click the following link to download."
 echo "http://$public_ip/$user_name.p12"  
 echo "The import password for the certificate is $user_pass"
+echo "VPN address and port is $public_ip:4433"
 }
 function shell_install() {
 	input_user
