@@ -27,7 +27,7 @@ expect eof
 exit
 END
 }
-#配置radius数据库并导入数据
+#增加证书用户函数
 function cert_add() {
 cd /root/anyconnect
 mkdir $user_name
