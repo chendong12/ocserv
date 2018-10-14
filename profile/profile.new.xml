@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnyConnectProfile xmlns="http://schemas.xmlsoap.org/encoding/">
+<ServerList>
+     <HostEntry>
+          <User>jack</User>
+          <HostName>119.28.5.143:4433</HostName>
+          <HostAddress>119.28.5.143:4433</HostAddress>
+     </HostEntry>
+</ServerList>
+</AnyConnectProfile>
