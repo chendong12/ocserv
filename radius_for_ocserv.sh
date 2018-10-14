@@ -143,6 +143,7 @@ echo "==========================================================================
 			   #auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
 			   #下面这句加上之后，daloradius在线用户中可以看到用户在线
 			   #acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
+			   修改完成之后执行systemctl restart ocserv 命令重启ocserv
 
 ==========================================================================" > /root/info.txt
 	cat /root/info.txt
