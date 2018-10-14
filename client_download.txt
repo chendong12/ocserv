@@ -5,8 +5,8 @@ http://180.188.197.212/down/anyconnect/anyconnect-macos-4.6.02074-predeploy-k9.d
 #Anyconnect Client for andriod
 http://180.188.197.212/down/anyconnect/anyconnect-v4.6.00143.apk
 
-download in china
-windows 客户端下载
+百度网盘客户端下载
+windows 客户端下载anyconnect-win-4.6.01098-core-vpn-predeploy-k9.msi
 链接: https://pan.baidu.com/s/1gXPBVAb721UexRy2JHG0sA 提取码: yq25
 
 osx 客户端下载
