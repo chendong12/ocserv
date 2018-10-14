@@ -158,6 +158,6 @@ set_daloradius4
 set_fix_radacct_table5
 set_iptables6
 set_web_config7
-set_initvpn8
+set_radiusclient8
 }
 shell_install
