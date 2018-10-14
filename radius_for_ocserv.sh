@@ -126,7 +126,6 @@ systemctl restart crond
 
 function set_radiusclient8(){
 	yum install radiusclient-ng -y
-  
 	echo "localhost testing123" >> /etc/radiusclient-ng/servers
 echo "==========================================================================
                   Centos7 VPN 安装完成                            
@@ -139,11 +138,11 @@ echo "==========================================================================
 		                             账号：administrator 密码:radius
 		                             
 		           如果采用radius认证，需要注释/etc/ocserv/ocserv.conf文件中的下面行密码认证行
-					auth = "plain[passwd=/etc/ocserv/ocpasswd]"
-					#下面的方法是使用radius验证用户，如果使用radius，请注释上面的密码验证
-					#auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
-					#下面这句加上之后，daloradius在线用户中可以看到用户在线
-					#acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
+			   auth = "plain[passwd=/etc/ocserv/ocpasswd]"
+			   #下面的方法是使用radius验证用户，如果使用radius，请注释上面的密码验证
+			   #auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
+			   #下面这句加上之后，daloradius在线用户中可以看到用户在线
+			   #acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
 
 ==========================================================================" > /root/info.txt
 	cat /root/info.txt
