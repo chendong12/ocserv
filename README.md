@@ -3,7 +3,7 @@
 <h5>ocserv_quick.sh － 快速安装anyconnect服务器的脚本文件</h5>
 <h5>ocserv.conf － 服务器主要配置文件</h5>
 <h5>install_script.sh － 服务器安装主要脚本文件</h5>
-<h5>ocserv_radius_quickinstall.sh － Ocserv 对接 Radius 快速安装脚本</h5>
+<h5 style="color:red">ocserv_radius_quickinstall.sh － Ocserv 对接 Radius 快速安装脚本</h5>
 <h5>radius_for_ocserv.sh － Ocserv 对接 Radius 主要脚本文件</h5>
 <h5>user_add.sh － 快速生成anyconnect 客户端账号及客户端证书的脚本</h5>
 <h5>user_del.sh － 快速删除anyconnect 客户端账号及禁用改账号证书脚本</h5>
