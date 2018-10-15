@@ -13,7 +13,7 @@
 
 <h3>youtube 视频教程链接</h3>
 <h4>服务器安装视频教程</h4>
-<h5>https://www.youtube.com/watch?v=15vB3BONeUg&index=1&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e</h5>
+<a href="https://www.youtube.com/watch?v=15vB3BONeUg&index=1&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e" target="_blank">服务器安装视频教程</a>
 <h4>服务器高级配置教程，含如何对接radius</h4>
 <h5>https://www.youtube.com/watch?v=d-7xV2J6soo&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e&index=3</h5>
 <h4>IOS 客户端链接视频教程</h4>
