@@ -1,0 +1,53 @@
+yum install git -y
+git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
+cd /opt/letsencrypt
+./letsencrypt-auto certonly -d example.com(这里修改为你的服务器域名)
+
+
+出现下面提示的时候选择3
+How would you like to authenticate with the ACME CA?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: Apache Web Server plugin - Beta (apache)
+2: Spin up a temporary webserver (standalone)
+3: Place files in webroot directory (webroot)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-3] then [enter] (press 'c' to cancel): 3
+
+
+出现下面提示的时候输入你的邮箱地址
+Enter email address (used for urgent renewal and security notices) (Enter 'c' to
+cancel): zcm8483@gmail.com
+
+
+出现下面提示输入A
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+agree in order to register with the ACME server at
+https://acme-v02.api.letsencrypt.org/directory
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(A)gree/(C)ancel: A
+
+
+出现下面提示输入Y
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing to share your email address with the Electronic Frontier
+Foundation, a founding partner of the Let's Encrypt project and the non-profit
+organization that develops Certbot? We'd like to send you email about our work
+encrypting the web, EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+
+
+提示这个时候输入/var/www/html
+Input the webroot for example.com: (Enter 'c' to cancel): /var/www/html/
+
+
+#修改ocserv服务器的配置文件
+vi /etc/ocserv/ocserv.conf 
+
+server-cert = /etc/letsencrypt/live/example.com/fullchain.pem
+server-key = /etc/letsencrypt/live/example.com/privkey.pem
+
+#重启服务器
+service ocserv restart
