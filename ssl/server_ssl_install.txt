@@ -1,3 +1,8 @@
+#本文帮助大家OCSERV 服务器如何使用域名连接
+#首先你需要有一个域名，并且解析到你的服务器
+#其次你安装了我的服务器脚本文件，https://raw.githubusercontent.com/chendong12/ocserv/master/ocserv_quick.sh
+#假定你的域名为example.com
+#按照下面方法配置完成之后你就可以使用域名登陆，并且这个域名使用免费的ssl证书，不会提示不信任服务器的情况，注意免费ssl证书是有时效的
 yum install git -y
 git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
 cd /opt/letsencrypt
@@ -54,3 +59,6 @@ server-key = /etc/letsencrypt/live/example.com/privkey.pem
 
 #重启服务器
 service ocserv restart
+
+#客户端使用example.com:4433 就可以连接到服务器了
+#记得把example.com 更换成你的域名
