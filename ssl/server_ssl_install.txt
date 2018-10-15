@@ -45,9 +45,12 @@ Input the webroot for example.com: (Enter 'c' to cancel): /var/www/html/
 
 #修改ocserv服务器的配置文件
 vi /etc/ocserv/ocserv.conf 
-
+#增加下面两行内容
 server-cert = /etc/letsencrypt/live/example.com/fullchain.pem
 server-key = /etc/letsencrypt/live/example.com/privkey.pem
+#注释掉原来的下面两行内容
+#server-cert = /etc/ocserv/server-cert.pem
+#server-key = /etc/ocserv/server-key.pem
 
 #重启服务器
 service ocserv restart
