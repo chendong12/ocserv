@@ -10,13 +10,13 @@
 	<li>停止服务器方法: systemctl stop ocserv</li>
 	<li>重启服务器方法: systemctl restart ocserv</li>
 </ul>
-</br>
-<h5>启动服务器方法: systemctl start ocserv</h5>
-<h5>停止服务器方法: systemctl stop ocserv</h5>
-<h5>重启服务器方法: systemctl restart ocserv</h5>
-
-
-
+<h3>增加客户端账号的方法</h3>
+<ul>
+	<li>/root/anyconnect/user_add.sh 通过脚本文件直接增加账号密码和证书文件 </li>
+	<li>ocpasswd -c /etc/ocserv/ocpasswd user_name 增加用户名为user_name的账号，如果已经存在则修改其密码</li>
+	<li>cd /root/anyconnect ; mkdir user_name ; cd user_name ; ../gen-client-cert.sh user_name /root/anyconnect 只增加用户证书文件</li>
+	<li>ocpasswd -d user_name 删除user_name账号</li>
+</ul>
 <h3>配置文件说明：</h3>
 <h5>ocserv_quick.sh － 快速安装anyconnect服务器的脚本文件</h5>
 <h5>ocserv.conf － 服务器主要配置文件</h5>
@@ -36,3 +36,4 @@
 <h5>https://www.youtube.com/watch?v=d-7xV2J6soo&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e&index=3</h5>
 <h4>IOS 客户端链接视频教程</h4>
 <h5>https://www.youtube.com/watch?v=7S-wXd-1HRY&index=2&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e</h5>
+
