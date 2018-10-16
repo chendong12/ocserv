@@ -14,7 +14,7 @@
 <ul>
 	<li>/root/anyconnect/user_add.sh 通过脚本文件直接增加账号密码和证书文件 </li>
 	<li>ocpasswd -c /etc/ocserv/ocpasswd user_name 增加用户名为user_name的账号，如果已经存在则修改其密码</li>
-	<li>cd /root/anyconnect ; mkdir user_name ; cd user_name ; ../gen-client-cert.sh user_name /root/anyconnect 只增加用户证书文件</li>
+	<li>cd /root/anyconnect ; mkdir user_name ; cd user_name ; ../gen-client-cert.sh user_name /root/anyconnect 只增加用户证书</li>
 	<li>ocpasswd -d user_name 删除user_name账号</li>
 </ul>
 <h3>配置文件说明：</h3>
