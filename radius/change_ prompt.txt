@@ -1,5 +1,5 @@
 修改radius的返回提示属性
 1、修改错误密码提示
-
+vi /etc/raddb/radiusd.conf
 You are already logged in - access denied
 367行
