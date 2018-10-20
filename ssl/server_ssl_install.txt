@@ -44,7 +44,7 @@ encrypting the web, EFF news, campaigns, and ways to support digital freedom.
 (Y)es/(N)o: Y
 
 
-提示这个时候输入/var/www/html
+(注意结尾一定要加/)提示这个时候输入/var/www/html/
 Input the webroot for example.com: (Enter 'c' to cancel): /var/www/html/
 
 
