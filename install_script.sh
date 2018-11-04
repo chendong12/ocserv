@@ -141,7 +141,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
 sysctl -p
 service iptables start
-chmod +x /etc/rc.local
+chmod +x /etc/rc.d/rc.local
 cat >>  /etc/rc.local <<EOF
 service ocserv start
 service iptables start
