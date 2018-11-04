@@ -1,5 +1,69 @@
 #!/bin/bash
-function 1_ntp_configure(){
+#######################################################
+#                                                     #
+# This is a ocserv installation for CentOS 7 and 6    #
+# Version: 1.1.1 20181101                             #
+# Author: haolong,zcm8483@gmail.com                   #
+# Website: https://github.com/chendong12/ocserv       #
+#                                                     #
+####################################################
+#
+#检测是否是root用户
+function check_root(){
+	[[ $EUID != 0 ]] && echo -e "${Error} 当前账号非ROOT(或没有ROOT权限)，无法继续操作，请使用${Green_background_prefix} sudo su ${Font_color_suffix}来获取临时ROOT权限（执行后会提示输入当前账号的密码）。" && exit 1
+}
+function check_sys(){
+	if [[ -f /etc/redhat-release ]]; then
+		release="centos"
+	elif cat /etc/issue | grep -q -E -i "debian"; then
+		release="debian"
+	elif cat /etc/issue | grep -q -E -i "ubuntu"; then
+		release="ubuntu"
+	elif cat /etc/issue | grep -q -E -i "centos|red hat|redhat"; then
+		release="centos"
+	elif cat /proc/version | grep -q -E -i "debian"; then
+		release="debian"
+	elif cat /proc/version | grep -q -E -i "ubuntu"; then
+		release="ubuntu"
+	elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
+		release="centos"
+    fi
+}
+function sys_clean(){
+	yum remove ocserv httpd mariadb-server freeradius freeradius-mysql freeradius-utils -y
+	rm -rf /var/www/html/*.p12
+	rm -rf /root/anyconnect/
+	rm -rf /tmp/crontab.back
+	rm -rf /etc/ocserv/
+	rm -rf /etc/raddb/
+	rm -rf /var/www/html/daloradius
+	rm -rf /etc/httpd/conf/httpd.conf
+	rm -rf /root/info.txt
+	rm -rf /opt/letsencrypt
+	sed -i "s/service ocserv start//g" /etc/rc.local
+	sed -i "s/service iptables start//g" /etc/rc.local
+	sed -i "s/service httpd start//g" /etc/rc.local
+	sed -i "s/echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward//g" /etc/rc.local
+	sed -i "s/iptables -F//g" /etc/rc.local
+	sed -i "s/iptables -A INPUT -i lo -j ACCEPT//g" /etc/rc.local
+	sed -i "s/iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT//g" /etc/rc.local
+	sed -i "s/iptables -A INPUT -p icmp -j ACCEPT//g" /etc/rc.local
+	sed -i "s/iptables -A INPUT -p tcp --dport 22 -j ACCEPT//g" /etc/rc.local
+	sed -i "s/iptables -I INPUT -p tcp --dport 80 -j ACCEPT//g" /etc/rc.local
+	sed -i "s/iptables -A INPUT -p tcp --dport 4433 -j ACCEPT//g" /etc/rc.local
+	sed -i "s/iptables -A INPUT -p udp --dport 4433 -j ACCEPT//g" /etc/rc.local
+	sed -i "s/iptables -A INPUT -j DROP//g" /etc/rc.local
+	sed -i "s/iptables -t nat -F//g" /etc/rc.local
+	sed -i "s/iptables -t nat -A POSTROUTING -s 10.12.0.0\/24 -o eth0 -j MASQUERADE//g" /etc/rc.local
+	sed -i "s/#自动调整mtu，ocserv服务器使用//g" /etc/rc.local
+	sed -i "s/iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu//g" /etc/rc.local
+	sed -i "s/systemctl start mariadb//g" /etc/rc.local
+	sed -i "s/systemctl start httpd//g" /etc/rc.local
+	sed -i "s/systemctl start radiusd//g" /etc/rc.local
+	sed -i "s/iptables -I INPUT -p tcp --dport 9090 -j ACCEPT//g" /etc/rc.local
+	sed -i '/^$/d' /etc/rc.local
+}
+function centos1_ntp(){
 	setenforce 0
 	sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
 	yum -y install ntp
@@ -15,8 +79,8 @@ function 1_ntp_configure(){
     systemctl disable firewalld
     yum install lynx wget expect iptables -y
 }
-function 4_Ocserv_Server_install(){
-yum install ocserv -y
+function centos2_ocserv(){
+yum install ocserv httpd -y
 mkdir /root/anyconnect
 cd /root/anyconnect
 #生成 CA 证书
@@ -73,17 +137,17 @@ chmod +x gen-client-cert.sh
 chmod +x user_add.sh
 chmod +x user_del.sh
 }
-function 7_iptables_init(){
+centos3_iptables(){
+echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
 sysctl -p
-systemctl start iptables
-yum install httpd -y
-service httpd start
+service iptables start
 chmod +x /etc/rc.local
 cat >>  /etc/rc.local <<EOF
-systemctl start ocserv
-systemctl start iptables
-systemctl start httpd
+service ocserv start
+service iptables start
+service httpd start
+echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables -F
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
@@ -100,9 +164,19 @@ iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 EOF
 reboot
 }
+function centos_install(){
+sys_clean
+centos1_ntp
+centos2_ocserv
+centos3_iptables
+}
 function shell_install() {
-1_ntp_configure
-4_Ocserv_Server_install
-7_iptables_init
+check_root
+check_sys
+	if [[ ${release} == "centos" ]]; then
+		centos_install
+	else
+		echo "您的操作系统不是Cenos，请更换操作系统之后再试"  && exit 1
+	fi
 }
 shell_install
