@@ -40,27 +40,27 @@ function sys_clean(){
 	rm -rf /etc/httpd/conf/httpd.conf
 	rm -rf /root/info.txt
 	rm -rf /opt/letsencrypt
-	sed -i '/service ocserv start/d' /etc/rc.local
-	sed -i '/service iptables start/d' /etc/rc.local
-	sed -i '/service httpd start/d' /etc/rc.local
-	sed -i '/echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward/d' /etc/rc.local
-	sed -i '/iptables -F/d' /etc/rc.local
-	sed -i '/iptables -A INPUT -i lo -j ACCEPT/d' /etc/rc.local
-	sed -i '/iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT/d' /etc/rc.local
-	sed -i '/iptables -A INPUT -p icmp -j ACCEPT/d' /etc/rc.local
-	sed -i '/iptables -A INPUT -p tcp --dport 22 -j ACCEPT/d' /etc/rc.local
-	sed -i '/iptables -I INPUT -p tcp --dport 80 -j ACCEPT/d' /etc/rc.local
-	sed -i '/iptables -A INPUT -p tcp --dport 4433 -j ACCEPT/d' /etc/rc.local
-	sed -i '/iptables -A INPUT -p udp --dport 4433 -j ACCEPT/d' /etc/rc.local
-	sed -i '/iptables -A INPUT -j DROP/d' /etc/rc.local
-	sed -i '/iptables -t nat -F/d' /etc/rc.local
-	sed -i '/iptables -t nat -A POSTROUTING -s 10.12.0.0\/24 -o eth0 -j MASQUERADE/d' /etc/rc.local
-	sed -i '/#自动调整mtu，ocserv服务器使用/d' /etc/rc.local
-	sed -i '/iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu/d' /etc/rc.local
-	sed -i '/systemctl start mariadb/d' /etc/rc.local
-	sed -i '/systemctl start httpd/d' /etc/rc.local
-	sed -i '/systemctl start radiusd/d' /etc/rc.local
-	sed -i '/iptables -I INPUT -p tcp --dport 9090 -j ACCEPT/d' /etc/rc.local
+	sed -i '/service ocserv start/d' /etc/rc.d/rc.local
+	sed -i '/service iptables start/d' /etc/rc.d/rc.local
+	sed -i '/service httpd start/d' /etc/rc.d/rc.local
+	sed -i '/echo 1 > \/proc\/sys\/net\/ipv4\/ip_forward/d' /etc/rc.d/rc.local
+	sed -i '/iptables -F/d' /etc/rc.d/rc.local
+	sed -i '/iptables -A INPUT -i lo -j ACCEPT/d' /etc/rc.d/rc.local
+	sed -i '/iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT/d' /etc/rc.d/rc.local
+	sed -i '/iptables -A INPUT -p icmp -j ACCEPT/d' /etc/rc.d/rc.local
+	sed -i '/iptables -A INPUT -p tcp --dport 22 -j ACCEPT/d' /etc/rc.d/rc.local
+	sed -i '/iptables -I INPUT -p tcp --dport 80 -j ACCEPT/d' /etc/rc.d/rc.local
+	sed -i '/iptables -A INPUT -p tcp --dport 4433 -j ACCEPT/d' /etc/rc.d/rc.local
+	sed -i '/iptables -A INPUT -p udp --dport 4433 -j ACCEPT/d' /etc/rc.d/rc.local
+	sed -i '/iptables -A INPUT -j DROP/d' /etc/rc.d/rc.local
+	sed -i '/iptables -t nat -F/d' /etc/rc.d/rc.local
+	sed -i '/iptables -t nat -A POSTROUTING -s 10.12.0.0\/24 -o eth0 -j MASQUERADE/d' /etc/rc.d/rc.local
+	sed -i '/#自动调整mtu，ocserv服务器使用/d' /etc/rc.d/rc.local
+	sed -i '/iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu/d' /etc/rc.d/rc.local
+	sed -i '/systemctl start mariadb/d' /etc/rc.d/rc.local
+	sed -i '/systemctl start httpd/d' /etc/rc.d/rc.local
+	sed -i '/systemctl start radiusd/d' /etc/rc.d/rc.local
+	sed -i '/iptables -I INPUT -p tcp --dport 9090 -j ACCEPT/d' /etc/rc.d/rc.local
 }
 function centos1_ntp(){
 	setenforce 0
@@ -142,7 +142,7 @@ echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
 sysctl -p
 service iptables start
 chmod +x /etc/rc.d/rc.local
-cat >>  /etc/rc.local <<EOF
+cat >>  /etc/rc.d/rc.local <<EOF
 service ocserv start
 service iptables start
 service httpd start
