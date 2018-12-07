@@ -36,4 +36,8 @@
 <h5>https://www.youtube.com/watch?v=d-7xV2J6soo&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e&index=3</h5>
 <h4>IOS 客户端链接视频教程</h4>
 <h5>https://www.youtube.com/watch?v=7S-wXd-1HRY&index=2&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e</h5>
+<h4>服务器拍错视频</h4>
+<h5>https://youtu.be/EkEwg9gN5Eg</h5>
+<h4>服务器安装SSL证书教程</h4>
+<h5>https://youtu.be/Y2GVdVq80Ds</h5>
 
