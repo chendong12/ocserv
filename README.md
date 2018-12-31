@@ -12,7 +12,7 @@
 > * 方法一：/root/anyconnect/user_add.sh 通过脚本文件直接增加账号密码和证书文件 
 > * 方法二：ocpasswd -c /etc/ocserv/ocpasswd user_name 增加用户名为user_name的账号，如果已经存在则修改其密码
 > * 方法二：cd /root/anyconnect ; mkdir user_name ; cd user_name ; ../gen-client-cert.sh user_name /root/anyconnect 只增加用户证书> * ocpasswd -d user_name 删除user_name账号
-## 配置文件说明：##
+## 配置文件说明 ##
 > * ocserv_quick.sh － 快速安装anyconnect服务器的脚本文件
 > * ocserv.conf － 服务器主要配置文件
 > * install_script.sh － 服务器安装主要脚本文件
@@ -26,13 +26,13 @@
 
 ## youtube 视频教程链接 ##
 > * 服务器安装视频教程
-> * https://www.youtube.com/watch?v=15vB3BONeUg&index=1&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e</h5>
-> * 服务器高级配置教程，含如何对接radius</h4>
-> * https://www.youtube.com/watch?v=d-7xV2J6soo&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e&index=3</h5>
-> * IOS 客户端链接视频教程</h4>
-> * https://www.youtube.com/watch?v=7S-wXd-1HRY&index=2&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e</h5>
-> * 服务器排错视频</h4>
-> * https://youtu.be/EkEwg9gN5Eg</h5>
-> * 服务器安装SSL证书教程</h4>
-> * https://youtu.be/Y2GVdVq80Ds</h5>
+> * https://www.youtube.com/watch?v=15vB3BONeUg&index=1&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e
+> * 服务器高级配置教程，含如何对接radius
+> * https://www.youtube.com/watch?v=d-7xV2J6soo&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e&index=3
+> * IOS 客户端链接视频教程
+> * https://www.youtube.com/watch?v=7S-wXd-1HRY&index=2&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e
+> * 服务器排错视频
+> * https://youtu.be/EkEwg9gN5Eg
+> * 服务器安装SSL证书教程
+> * https://youtu.be/Y2GVdVq80Ds
 
