@@ -1,4 +1,4 @@
-如果需要把 radius 和 ocserv 分成不同的服务器，需要配置下的的文件
+如果需要把 radius服务器 和 ocserv 服务器部署到不同的服务器，需要配置下的的文件
 
 1、在ocserv 服务器端
 iptables -I INPUT -p tcp --dport 1812 -j ACCEPT
