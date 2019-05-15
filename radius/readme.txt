@@ -26,9 +26,13 @@ vi /etc/radiusclient-ng/servers
 1.2.3.4        some-pass
 
 如果采用radius认证，需要注释/etc/ocserv/ocserv.conf文件中的下面行密码认证行
-			   auth = "plain[passwd=/etc/ocserv/ocpasswd]"
-			   #下面的方法是使用radius验证用户，如果使用radius，请注释上面的密码验证
-			   #auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
-			   #下面这句加上之后，daloradius在线用户中可以看到用户在线
-			   #acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
-			   修改完成之后执行systemctl restart ocserv 命令重启ocserv
+auth = "plain[passwd=/etc/ocserv/ocpasswd]"
+ #下面的方法是使用radius验证用户，如果使用radius，请注释上面的密码验证
+#auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
+#下面这句加上之后，daloradius在线用户中可以看到用户在线
+#acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
+修改完成之后执行systemctl restart ocserv 命令重启ocserv
+
+修改phpmail乱码问题
+vi /var/www/html/user_reg_new/mailer/class.phpmailer.php
+修改其中的public $CharSet = ‘iso-8859-1′; 改为 public $CharSet = ‘UTF-8′;
