@@ -1,0 +1,10 @@
+本说明讲述，如何使用Symantec的证书
+通过阿里云可以免费申请1年的Symantec SSL 证书
+申请成功后，下载证书文件，下载类型时选择 其他，会得到两个文件,其中yourdomain 是你的域名
+2204333_yourdomain.key
+2204333_yourdomain.pem
+将两个文件拷贝到/etc/ocserv 下面
+修改ocserv.conf 文件
+server-cert = /etc/ocserv/2204333_yourdomain.pem
+server-key = /etc/ocserv/2204333_yourdomain.key
+重启ocserv 就可以了
