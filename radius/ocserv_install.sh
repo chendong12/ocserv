@@ -175,7 +175,7 @@ check_sys
 	if [[ ${release} == "centos" ]]; then
 		centos_install
 	else
-		echo "Your operating system is not Cenos7, please try again after replacing the operating system."  && exit 1
+		echo "Your operating system is not Cenos, please try again after replacing the operating system."  && exit 1
 	fi
 }
 shell_install
