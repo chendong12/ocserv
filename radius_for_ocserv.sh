@@ -1,4 +1,20 @@
 #!/bin/bash
+function centos1_ntp(){
+	setenforce 0
+	sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
+	yum -y install ntp
+	service ntpd restart
+	cp -rf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+	cd /root
+	echo '0-59/10 * * * * /usr/sbin/ntpdate -u cn.pool.ntp.org' >> /tmp/crontab.back
+	crontab /tmp/crontab.back
+	systemctl restart crond
+	yum install net-tools -y
+	yum install epel-release -y
+	systemctl stop firewalld
+    systemctl disable firewalld
+    yum install lynx wget expect iptables -y
+}
 function set_shell_input1() {
 	sqladmin=0p0o0i0900
 	yum install lynx -y
@@ -151,6 +167,7 @@ echo "==========================================================================
 }
 
 function shell_install() {
+centos1_ntp
 set_shell_input1
 set_mysql2
 set_freeradius3
