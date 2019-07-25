@@ -123,6 +123,7 @@ _EOF_
 certtool --generate-crl --load-ca-privkey ca-key.pem \
            --load-ca-certificate ca-cert.pem \
            --template crl.tmpl --outfile crl.pem
+cp crl.pem /etc/ocserv/	   
 #配置 ocserv
 cd /etc/ocserv/
 rm -rf ocserv.conf
