@@ -85,8 +85,8 @@ cd /root/anyconnect
 #生成 CA 证书
 certtool --generate-privkey --outfile ca-key.pem
 cat >ca.tmpl <<EOF
-cn = "HY Annyconnect CA"
-organization = "HUAYU"
+cn = "Annyconnect CA"
+organization = "Anyconnect"
 serial = 1
 expiration_days = 3650
 ca
@@ -99,8 +99,8 @@ cp ca-cert.pem /etc/ocserv/
 #生成本地服务器证书
 certtool --generate-privkey --outfile server-key.pem
 cat >server.tmpl <<EOF
-cn = "HY Annyconnect CA"
-organization = "HUAYU"
+cn = "Annyconnect CA"
+organization = "Anyconnect"
 serial = 2
 expiration_days = 3650
 encryption_key
