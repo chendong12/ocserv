@@ -11,7 +11,7 @@
 ## 增加客户端账号的方法
 > * 方法一：/root/anyconnect/user_add.sh 通过脚本文件直接增加账号密码和证书文件 
 > * 方法二：ocpasswd -c /etc/ocserv/ocpasswd user_name 增加用户名为user_name的账号，如果已经存在则修改其密码
-> * 方法二：cd /root/anyconnect ; mkdir user_name ; cd user_name ; ../gen-client-cert.sh user_name /root/anyconnect 只增加用户证书> * ocpasswd -d user_name 删除user_name账号
+> * 方法三：cd /root/anyconnect ; mkdir user_name ; cd user_name ; ../gen-client-cert.sh user_name /root/anyconnect 只增加用户证书> * ocpasswd -d user_name 删除user_name账号
 ## 配置文件说明 ##
 > * ocserv_quick.sh － 快速安装anyconnect服务器的脚本文件
 > * ocserv.conf － 服务器主要配置文件
