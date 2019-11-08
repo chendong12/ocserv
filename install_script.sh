@@ -141,11 +141,9 @@ centos3_iptables(){
 echo 1 > /proc/sys/net/ipv4/ip_forward
 echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
 sysctl -p
-service iptables start
 chmod +x /etc/rc.d/rc.local
 cat >>  /etc/rc.d/rc.local <<EOF
 service ocserv start
-service iptables start
 service httpd start
 echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables -F
@@ -162,6 +160,7 @@ iptables -t nat -A POSTROUTING -s 10.12.0.0/24 -o eth0 -j MASQUERADE
 #自动调整mtu，ocserv服务器使用
 iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 EOF
+echo "Anyconnect服务器安装完成，服务准备重启，重启后即可正常使用"
 reboot
 }
 function centos_install(){
