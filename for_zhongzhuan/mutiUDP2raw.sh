@@ -18,7 +18,7 @@ echo '增加服务器去往国内路由到table 5'
 ip route add $server1 $OLDGW  table 5
 #ip route add $server2 $OLDGW  table 5
 echo '启动第一阶段udp2raw'
-/root/udp2raw/udp2raw_amd64 -c -r$server1:50000 -l 127.0.0.1:1198 --raw-mode faketcp  -k s89932874 --fix-gro &
+/root/udp2raw/udp2raw_amd64 -c -r$server1:50000 -l 127.0.0.1:1198 --raw-mode faketcp  -k udp2rawpassword --fix-gro &
 echo '启动openvpn客户端'
 /usr/sbin/openvpn /etc/openvpn/client/client.ovpn >/dev/null &
 #
