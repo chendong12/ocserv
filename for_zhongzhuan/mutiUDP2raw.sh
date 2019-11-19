@@ -1,3 +1,5 @@
+#!/bin/bash
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 sleep 1
 #
 server1='Change_to_your_abord_serverip'
