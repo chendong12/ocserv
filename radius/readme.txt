@@ -39,3 +39,9 @@ auth = "plain[passwd=/etc/ocserv/ocpasswd]"
 修改phpmail乱码问题
 vi /var/www/html/user_reg_new/mailer/class.phpmailer.php
 修改其中的public $CharSet = ‘iso-8859-1′; 改为 public $CharSet = ‘UTF-8′;
+
+radius 客户端测试方法
+radtest user user_pass server_ipaddress 1812 securit
+
+#下面这句加上之后，daloradius在线用户中可以看到用户在线测试
+#下面这句加上之后，daloradius在线用户中可以看到用户在线
