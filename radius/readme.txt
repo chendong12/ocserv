@@ -45,3 +45,7 @@ radtest user user_pass server_ipaddress 1812 securit
 
 #下面这句加上之后，daloradius在线用户中可以看到用户在线测试
 #下面这句加上之后，daloradius在线用户中可以看到用户在线
+
+#重要，如果客户端无法连接radius服务器，请重启radius服务器（reboot）
+If you use radius authentication, you need to comment below line at the /etc/ocserv/ocserv.conf file
+If you use radius authentication, you need to comment below line at the /etc/ocserv/ocserv.conf file
