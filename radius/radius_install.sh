@@ -108,10 +108,11 @@ Listen 9090
 cd /var/www/html/
 rm -rf *
 wget http://180.188.197.212/down/daloradius20180418.tar.gz 
-tar xzvf daloradius20180418.tar.gz 
+tar xzvf daloradius20180418.tar.gz
 rm -rf daloradius20180418.tar.gz
 chown -R apache:apache /var/www/html/daloradius
 service httpd restart
+sed -i "s/mysql/mysqli/g" /var/www/html/daloradius/library/daloradius.conf.php
 mkdir /usr/mysys/
 cd /usr/mysys/
 wget http://180.188.197.212/down/dbback.tar.gz
