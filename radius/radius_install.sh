@@ -57,6 +57,7 @@ function set_daloradius4(){
 	sleep 3
 	sed -i "s/\['CONFIG_DB_USER'\] = 'root'/\['CONFIG_DB_USER'\] = 'radius'/g"  /var/www/html/daloradius/library/daloradius.conf.php
 	sed -i "s/\['CONFIG_DB_PASS'\] = ''/\['CONFIG_DB_PASS'\] = 'p0radius_0p'/g" /var/www/html/daloradius/library/daloradius.conf.php
+	sed -i "s/mysql/mysqli/g" /var/www/html/daloradius/library/daloradius.conf.php
 	yum -y install epel-release
 	yum -y install php-pear-DB
 	systemctl restart mariadb.service 
