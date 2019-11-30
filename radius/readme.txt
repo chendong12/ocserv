@@ -1,17 +1,20 @@
 如果需要把 radius服务器 和 ocserv 服务器部署到不同的服务器，需要配置下的的文件
+
+## 在radius 服务器上的配置
 If you need to deploy the radius server and ocserv server to different servers, you need to configure the files.
-1、在radius 服务器上开放radius 端口
+> * 1、在radius 服务器上开放radius 端口
 iptables -I INPUT -p tcp --dport 1812 -j ACCEPT
 iptables -I INPUT -p udp --dport 1812 -j ACCEPT
 iptables -I INPUT -p tcp --dport 1813 -j ACCEPT
 iptables -I INPUT -p udp --dport 1813 -j ACCEPT
 
-#修改radius服务器上的密码
+> * 2、修改radius服务器上的密码
 vim /etc/raddb/clients.conf
 Change below
 ipv4addr = *
 secret = testing123
 
+## 在ocserv 服务器上的配置
 #以下内容是在ocserv 服务器上进行
 1、install radiusclient for Ocserv server
 yum install radiusclient-ng -y
