@@ -47,8 +47,10 @@ vi /etc/ocserv/ocserv.conf
 auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
 acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
 ```
-修改完成之后执行systemctl restart ocserv 命令重启ocserv
-
+修改完成之后执行下面命令重启ocserv
+```bash
+systemctl restart ocserv
+```
 ## 修改phpmail乱码问题 ##
 ```bash
 #修改其中的public $CharSet = ‘iso-8859-1′; 改为 public $CharSet = ‘UTF-8′;
