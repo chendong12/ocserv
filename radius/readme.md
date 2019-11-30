@@ -10,29 +10,35 @@ iptables -I INPUT -p tcp --dport 1813 -j ACCEPT
 iptables -I INPUT -p udp --dport 1813 -j ACCEPT
 ```
 > * 2、修改radius服务器上的密码
+```bash 
 vim /etc/raddb/clients.conf
 Change below
 ipv4addr = *
 secret = testing123
-
+```
 ## 在ocserv 服务器上的配置
 #以下内容是在ocserv 服务器上进行
 > * 1、安装 radiusclient-ng
+```bash
 yum install radiusclient-ng -y
+```
 
 > * 2、配置 radiusclient
+```bash
 vi /etc/radiusclient-ng/radiusclient.conf
 You need to specify the address of the radius server, modify the following two lines, here you assume that you have set up the radius server and the IP is 1.2.3.4:
 
 authserver 1.2.3.4
 acctserver 1.2.3.4
+```
 
 > * 3、增加服务器IP及radius连接密码
+```bash
 vi /etc/radiusclient-ng/servers
 add below
 
 1.2.3.4        some-pass
-
+```
 > * 4、修改ocserv 服务器配置，开启radius认证
 If you use radius authentication, you need to comment below line at the /etc/ocserv/ocserv.conf file
 auth = "plain[passwd=/etc/ocserv/ocpasswd]"
