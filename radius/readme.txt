@@ -1,6 +1,6 @@
 如果需要把 radius服务器 和 ocserv 服务器部署到不同的服务器，需要配置下的的文件
 
-## 在radius 服务器上的配置
+### 在radius 服务器上的配置 ###
 If you need to deploy the radius server and ocserv server to different servers, you need to configure the files.
 > * 1、在radius 服务器上开放radius 端口
 iptables -I INPUT -p tcp --dport 1812 -j ACCEPT
