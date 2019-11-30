@@ -26,7 +26,7 @@ yum install radiusclient-ng -y
 > * 2、配置 radiusclient
 ```bash
 vi /etc/radiusclient-ng/radiusclient.conf
-You need to specify the address of the radius server, modify the following two lines, here you assume that you have set up the radius server and the IP is 1.2.3.4:
+#将authserver和acctserver 后面的地址，修改为你实际的radius服务器地址，假定你radius服务器地址为 1.2.3.4:
 
 authserver 1.2.3.4
 acctserver 1.2.3.4
@@ -35,23 +35,28 @@ acctserver 1.2.3.4
 > * 3、增加服务器IP及radius连接密码
 ```bash
 vi /etc/radiusclient-ng/servers
-add below
+#添加下面内容，其中1.2.3.4 位你的radius服务器IP地址，some-pass 为密码
 
-1.2.3.4        some-pass
+1.2.3.4       testing123
 ```
 > * 4、修改ocserv 服务器配置，开启radius认证
-If you use radius authentication, you need to comment below line at the /etc/ocserv/ocserv.conf file
-auth = "plain[passwd=/etc/ocserv/ocpasswd]"
- #下面的方法是使用radius验证用户，如果使用radius，请注释上面的密码验证
-#auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
-#下面这句加上之后，daloradius在线用户中可以看到用户在线
-#acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
+```bash
+vi /etc/ocserv/ocserv.conf
+#注释密码认证，去掉radiusclient-ng 相关的两行内容，如下所示
+#auth = "plain[passwd=/etc/ocserv/ocpasswd]
+auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
+acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
+```
 修改完成之后执行systemctl restart ocserv 命令重启ocserv
 
 ## 修改phpmail乱码问题 ##
+```bash
+#修改其中的public $CharSet = ‘iso-8859-1′; 改为 public $CharSet = ‘UTF-8′;
 vi /var/www/html/user_reg_new/mailer/class.phpmailer.php
-修改其中的public $CharSet = ‘iso-8859-1′; 改为 public $CharSet = ‘UTF-8′;
+```
 
 ## radius 客户端测试方法 ##
-radtest user user_pass server_ipaddress 1812 securit
+```bash
+radtest user user_pass testing123 1812 testing123
+```
 
