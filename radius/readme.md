@@ -3,11 +3,12 @@
 ### 在radius 服务器上的配置 ###
 If you need to deploy the radius server and ocserv server to different servers, you need to configure the files.
 > * 1、在radius 服务器上开放radius 端口
-```sh iptables -I INPUT -p tcp --dport 1812 -j ACCEPT
+```sh 
+iptables -I INPUT -p tcp --dport 1812 -j ACCEPT
 iptables -I INPUT -p udp --dport 1812 -j ACCEPT
 iptables -I INPUT -p tcp --dport 1813 -j ACCEPT
 iptables -I INPUT -p udp --dport 1813 -j ACCEPT
-
+```
 > * 2、修改radius服务器上的密码
 vim /etc/raddb/clients.conf
 Change below
