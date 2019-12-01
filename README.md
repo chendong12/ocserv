@@ -36,3 +36,19 @@
 > * 服务器安装SSL证书教程
 > * https://youtu.be/Y2GVdVq80Ds
 
+## 修改 /var/lib/ocserv/profile.xml 文件可以将服务器的配置推送给客户端 ###
+```bash
+vi /var/lib/ocserv/profile.xml
+<ServerList>
+                <HostEntry>
+                    <HostName>服务器描述1</HostName>
+                    <HostAddress>server1_ipaddress:port</HostAddress>
+                </HostEntry>
+                <HostEntry>
+                    <HostName>服务器描述2</HostName>
+                    <HostAddress>server2_ipaddress:port</HostAddress>
+                </HostEntry>
+        </ServerList>
+```
+
+
