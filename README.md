@@ -39,6 +39,8 @@
 ## 修改 /var/lib/ocserv/profile.xml 文件可以将服务器的配置推送给客户端 ###
 ```bash
 vi /var/lib/ocserv/profile.xml
+```
+```xml
 <ServerList>
                 <HostEntry>
                     <HostName>服务器描述1</HostName>
