@@ -24,17 +24,6 @@
 > * certificate.txt － 单独新增证书用户说明
 > * /ssl/server_ssl_install.txt 服务器通过域名连接，并配置可信ssl的方法说明
 
-## youtube 视频教程链接 ##
-> * 服务器安装视频教程
-> * https://www.youtube.com/watch?v=15vB3BONeUg&index=1&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e
-> * 服务器高级配置教程，含如何对接radius
-> * https://www.youtube.com/watch?v=d-7xV2J6soo&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e&index=3
-> * IOS 客户端链接视频教程
-> * https://www.youtube.com/watch?v=7S-wXd-1HRY&index=2&list=PLpwhzgi1EIz6kIIwCkkeGuIj7QVFSDd4e
-> * 服务器排错视频
-> * https://youtu.be/EkEwg9gN5Eg
-> * 服务器安装SSL证书教程
-> * https://youtu.be/Y2GVdVq80Ds
 
 ## 修改 /var/lib/ocserv/profile.xml 文件中的内容可以将服务器的配置推送给客户端 ###
 ```bash
