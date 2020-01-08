@@ -16,8 +16,8 @@ Change below
 ipv4addr = *
 secret = testing123
 ```
-## 在ocserv 服务器上的配置
-#以下内容是在ocserv 服务器上进行
+## 在ocserv 服务器(radius 客户端)上的配置
+#以下内容是在ocserv 服务器(radius 客户端)上进行
 > * 1、安装 radiusclient-ng
 ```bash
 yum install radiusclient-ng -y
