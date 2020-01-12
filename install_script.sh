@@ -151,8 +151,8 @@ iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -p icmp -j ACCEPT
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 iptables -I INPUT -p tcp --dport 80 -j ACCEPT
-iptables -A INPUT -p tcp --dport 4433 -j ACCEPT
-iptables -A INPUT -p udp --dport 4433 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+iptables -A INPUT -p udp --dport 443 -j ACCEPT
 iptables -A INPUT -j DROP
 iptables -t nat -F
 iptables -t nat -A POSTROUTING -s 10.12.0.0/24 -o eth0 -j MASQUERADE
