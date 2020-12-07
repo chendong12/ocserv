@@ -78,6 +78,7 @@ function centos1_ntp(){
     yum install lynx wget expect iptables -y
 }
 function centos2_ocserv(){
+yum install epel-release wget -y
 yum install ocserv httpd -y
 mkdir /root/anyconnect
 cd /root/anyconnect
