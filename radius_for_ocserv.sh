@@ -140,8 +140,14 @@ systemctl restart crond
 }
 
 function set_radiusclient8(){
-	yum install radiusclient-ng -y
-	echo "localhost testing123" >> /etc/radiusclient-ng/servers
+yum install radiusclient-ng -y
+echo "localhost testing123" >> /etc/radiusclient-ng/servers
+echo "switch auth to radius"
+sed -i "s/#auth = \"radius\[config=\/etc\/radiusclient-ng\/radiusclient.conf,groupconfig=true\]\"/auth = \"radius\[config=\/etc\/radiusclient-ng\/radiusclient.conf,groupconfig=true\]\"/g" /etc/ocserv/ocserv.conf 
+sed -i "s/#acct = \"radius\[config=\/etc\/radiusclient-ng\/radiusclient.conf\]\"/acct = \"radius\[config=\/etc\/radiusclient-ng\/radiusclient.conf\]\"/g" /etc/ocserv/ocserv.conf
+sed -i "s/auth = \"plain\[passwd=\/etc\/ocserv\/ocpasswd\]\"/#auth = \"plain\[passwd=\/etc\/ocserv\/ocpasswd\]\"/g" /etc/ocserv/ocserv.conf
+systemctl restart ocserv
+#
 echo "==========================================================================
                   Centos7 VPN 安装完成                            
 										 
@@ -151,8 +157,10 @@ echo "==========================================================================
 
 		          VPN 账号管理后台地址：http://$public_ip:9090
 		                             账号：administrator 密码:radius
-		                             
-		           如果采用radius认证，需要注释/etc/ocserv/ocserv.conf文件中的下面行密码认证行
+		           
+			   如果使用Raidus 认证需要修改ocserv.conf 配置文件，本脚本已经修改
+		           修改过程如下：
+			   1、需要注释/etc/ocserv/ocserv.conf文件中的下面行密码认证行
 			   auth = "plain[passwd=/etc/ocserv/ocpasswd]"
 			   #下面的方法是使用radius验证用户，如果使用radius，请注释上面的密码验证
 			   #auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
