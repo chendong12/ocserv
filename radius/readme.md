@@ -62,3 +62,22 @@ vi /var/www/html/user_reg_new/mailer/class.phpmailer.php
 radtest user user_pass testing123 1812 testing123
 ```
 
+## 如何区分用户名的大小写 ##
+#默认情况下anyconnect 连接后用户名是不区分大小写的，例如 tom 和Tom 都会接受，但同时在线用户数的确认就失效了
+```bash
+vi /etc/raddb/mods-config/sql/main/mysql/queries.conf
+#修改其中的用户查询认证为如下信息即可
+authorize_check_query = "\
+       SELECT id, username, attribute, value, op \
+       FROM ${authcheck_table} \
+       WHERE username = BINARY '%{SQL-User-Name}' \
+       ORDER BY id"
+
+authorize_reply_query = "\
+       SELECT id, username, attribute, value, op \
+       FROM ${authreply_table} \
+       WHERE username = BINARY '%{SQL-User-Name}' \
+       ORDER BY id"
+
+```
+
