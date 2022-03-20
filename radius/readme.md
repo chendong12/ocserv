@@ -18,14 +18,14 @@ secret = testing123
 ```
 ## 在ocserv 服务器(radius 客户端)上的配置
 #以下内容是在ocserv 服务器(radius 客户端)上进行
-> * 1、安装 radiusclient-ng
+> * 1、安装 radicli
 ```bash
-yum install radiusclient-ng -y
+yum install -y radcli-devel
 ```
 
 > * 2、配置 radiusclient
 ```bash
-vi /etc/radiusclient-ng/radiusclient.conf
+vi /etc/radcli/radiusclient.conf
 #将authserver和acctserver 后面的地址，修改为你实际的radius服务器地址，假定你radius服务器地址为 1.2.3.4:
 
 authserver 1.2.3.4
@@ -34,7 +34,7 @@ acctserver 1.2.3.4
 
 > * 3、增加服务器IP及radius连接密码
 ```bash
-vi /etc/radiusclient-ng/servers
+vi /etc/radcli/servers
 #添加下面内容，其中1.2.3.4 位你的radius服务器IP地址，some-pass 为密码
 
 1.2.3.4       testing123
@@ -44,8 +44,8 @@ vi /etc/radiusclient-ng/servers
 vi /etc/ocserv/ocserv.conf
 #注释密码认证，去掉radiusclient-ng 相关的两行内容，如下所示
 #auth = "plain[passwd=/etc/ocserv/ocpasswd]
-auth = "radius[config=/etc/radiusclient-ng/radiusclient.conf,groupconfig=true]"
-acct = "radius[config=/etc/radiusclient-ng/radiusclient.conf]"
+auth = "radius[config=/etc/radcli/radiusclient.conf,groupconfig=true]"
+acct = "radius[config=/etc/radcli/radiusclient.conf]"
 ```
 修改完成之后执行下面命令重启ocserv
 ```bash
