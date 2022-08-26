@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AnyConnectProfile xmlns="http://schemas.xmlsoap.org/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.xmlsoap.org/encoding/ AnyConnectProfile.xsd">
+        <ServerList>
+                <HostEntry>
+                    <HostName>hostname</HostName>
+                    <HostAddress>hostname.com:4433</HostAddress>
+                </HostEntry>
+        </ServerList>
+</AnyConnectProfile>
