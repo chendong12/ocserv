@@ -41,7 +41,7 @@ vi /var/lib/ocserv/profile.xml
                 </HostEntry>
 </ServerList>
 ```
-
+```bash
 ## ocserv 常见配置说明 ##
 #### 配置vpn客户端的速率 ###
 rx-data-per-sec =
@@ -52,21 +52,30 @@ tx-data-per-sec =
 3M    393216
 4M    524288
 5M    655360
+```
 
 ### 配置连接协议为tls v1.2###
 
+```bash
 tls-priorities = "SECURE128:+SECURE192:-VERS-ALL:+VERS-TLS1.2"
-
+```
 
 ### 指定文件记录连接日志 ###
+编辑 /etc/ocserv/ocserv.conf
+增加如下内容
+
+```bash
 connect-script = /etc/ocserv/connect-script
 disconnect-script = /etc/ocserv/connect-script
-
+```
+新建 connect-script 文件
+```bash
 touch /etc/ocserv/connect-script
-
 chmod +x /etc/ocserv/connect-script
+```
 
 /etc/ocserv/connect-script 文件内容如下
+
 ```bash
 #!/bin/bash
  
