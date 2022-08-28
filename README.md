@@ -61,7 +61,7 @@ tx-data-per-sec =
 tls-priorities = "SECURE128:+SECURE192:-VERS-ALL:+VERS-TLS1.2"
 ```
 
-### 指定文件记录连接日志 ###
+### 记录anyconnect连接断开的日志 ###
 编辑 /etc/ocserv/ocserv.conf
 增加如下内容
 
@@ -94,8 +94,12 @@ echo `date` $USERNAME "disconnected" >> $LOGFILE
 esac
 exit 0
 ```
+配置完成后重启 ocserv
+
+
 ```bash
-# cat login.log 
+systemctl restart ocserv
+cat /etc/ocserv/login.log 
 2022年 08月 28日 星期日 11:23:56 CST test connected
 2022年 08月 28日 星期日 11:23:56 CST connect jack vpns0 10.12.0.1 10.12.0.128 1.27.210.31
 2022年 08月 28日 星期日 11:24:00 CST test disconnected
