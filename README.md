@@ -41,9 +41,10 @@ vi /var/lib/ocserv/profile.xml
                 </HostEntry>
 </ServerList>
 ```
-```bash
+
 ## ocserv 常见配置说明 ##
 #### 配置vpn客户端的速率 ###
+```bash
 rx-data-per-sec =
 tx-data-per-sec = 
 如果要设置2Mbps带宽，清输入 262144，计算方法为：  2048(2*1024)*1024/8 = 262144
@@ -93,9 +94,11 @@ echo `date` $USERNAME "disconnected" >> $LOGFILE
 esac
 exit 0
 ```
+```bash
 # cat login.log 
 2022年 08月 28日 星期日 11:23:56 CST test connected
 2022年 08月 28日 星期日 11:23:56 CST connect jack vpns0 10.12.0.1 10.12.0.128 1.27.210.31
 2022年 08月 28日 星期日 11:24:00 CST test disconnected
+```
 
 
