@@ -55,7 +55,7 @@ tx-data-per-sec =
 5M    655360
 ```
 
-### 配置连接协议为tls v1.2###
+### 配置连接协议为tls v1.2 ###
 
 ```bash
 tls-priorities = "SECURE128:+SECURE192:-VERS-ALL:+VERS-TLS1.2"
