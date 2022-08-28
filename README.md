@@ -42,4 +42,51 @@ vi /var/lib/ocserv/profile.xml
 </ServerList>
 ```
 
+## ocserv 常见配置说明 ##
+#### 配置vpn客户端的速率 ###
+rx-data-per-sec =
+tx-data-per-sec = 
+如果要设置2Mbps带宽，清输入 262144，计算方法为：  2048(2*1024)*1024/8 = 262144
+1M    131072
+2M    262144
+3M    393216
+4M    524288
+5M    655360
+
+### 配置连接协议为tls v1.2###
+
+tls-priorities = "SECURE128:+SECURE192:-VERS-ALL:+VERS-TLS1.2"
+
+
+### 指定文件记录连接日志 ###
+connect-script = /etc/ocserv/connect-script
+disconnect-script = /etc/ocserv/connect-script
+
+touch /etc/ocserv/connect-script
+
+chmod +x /etc/ocserv/connect-script
+
+/etc/ocserv/connect-script 文件内容如下
+```bash
+#!/bin/bash
+ 
+export LOGFILE=/etc/ocserv/login.log
+ 
+#echo $USERNAME : $REASON : $DEVICE
+case "$REASON" in
+  connect)
+echo `date` $USERNAME "connected" >> $LOGFILE
+echo `date` $REASON $USERNAME $DEVICE $IP_LOCAL $IP_REMOTE $IP_REAL >> $LOGFILE
+    ;;
+  disconnect)
+echo `date` $USERNAME "disconnected" >> $LOGFILE
+    ;;
+esac
+exit 0
+```
+# cat login.log 
+2022年 08月 28日 星期日 11:23:56 CST test connected
+2022年 08月 28日 星期日 11:23:56 CST connect jack vpns0 10.12.0.1 10.12.0.128 1.27.210.31
+2022年 08月 28日 星期日 11:24:00 CST test disconnected
+
 
