@@ -1,0 +1,15 @@
+#!/bin/bash
+ 
+export LOGFILE=/var/log/ocserv.conf
+ 
+#echo $USERNAME : $REASON : $DEVICE
+case "$REASON" in
+  connect)
+echo `date` $USERNAME "connected" >> $LOGFILE
+echo `date` $REASON $USERNAME $DEVICE $IP_LOCAL $IP_REMOTE $IP_REAL >> $LOGFILE
+    ;;
+  disconnect)
+echo `date` $USERNAME "disconnected" >> $LOGFILE
+    ;;
+esac
+exit 0
