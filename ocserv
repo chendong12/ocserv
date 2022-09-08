@@ -1,0 +1,7 @@
+/var/log/ocserv.log {
+    missingok
+    daily
+    copytruncate
+    rotate 7
+    notifempty
+}
