@@ -46,7 +46,7 @@ function set_freeradius3(){
 }
 function set_daloradius4(){
 	cd /var/www/html/
-	wget http://180.188.197.212/down/daloradius-0.9-9.tar.gz >/dev/null 2>&1
+	wget http://180.188.197.212/down/daloradius-0.9-9.tar.gz --no-check-certificate >/dev/null 2>&1
 	tar xzvf daloradius-0.9-9.tar.gz
 	mv daloradius-0.9-9 daloradius
 	chown -R apache:apache /var/www/html/daloradius/
@@ -74,7 +74,7 @@ function set_daloradius4(){
 function set_fix_radacct_table5(){
 	cd /tmp
 	sleep 3
-	wget http://180.188.197.212/down/radacct_new.sql.tar.gz
+	wget http://180.188.197.212/down/radacct_new.sql.tar.gz --no-check-certificate
 	tar xzvf radacct_new.sql.tar.gz
 	mysql -uradius -p'p0radius_0p' radius < /tmp/radacct_new.sql
 	rm -rf radacct_new.sql.tar.gz
@@ -107,7 +107,7 @@ Listen 9090
 " >> /etc/httpd/conf/httpd.conf
 cd /var/www/html/
 rm -rf *
-wget http://180.188.197.212/down/daloradius20180418.tar.gz 
+wget http://180.188.197.212/down/daloradius20180418.tar.gz --no-check-certificate
 tar xzvf daloradius20180418.tar.gz
 rm -rf daloradius20180418.tar.gz
 chown -R apache:apache /var/www/html/daloradius
@@ -115,7 +115,7 @@ service httpd restart
 sed -i "s/mysql/mysqli/g" /var/www/html/daloradius/library/daloradius.conf.php
 mkdir /usr/mysys/
 cd /usr/mysys/
-wget http://180.188.197.212/down/dbback.tar.gz
+wget http://180.188.197.212/down/dbback.tar.gz --no-check-certificate
 tar xzvf dbback.tar.gz
 rm -rf dbback.tar.gz
 echo 'mysql -uradius -pp0radius_0p -e "UPDATE radius.radacct SET acctstoptime = acctstarttime + acctsessiontime WHERE ((UNIX_TIMESTAMP(acctstarttime) + acctsessiontime + 240 - UNIX_TIMESTAMP())<0) AND acctstoptime IS NULL;"' >> /usr/mysys/clearsession.sh
