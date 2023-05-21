@@ -1,0 +1,10 @@
+sqlcounter monthlytrafficcounter {
+        sql_module_instance = sql
+        dialect = "mysql"
+        counter_name = Monthly-Traffic
+        check_name = Max-Monthly-Traffic
+        reply_name = Monthly-Traffic-Limit
+        key = User-Name
+        reset = monthly
+        $INCLUDE ${modconfdir}/sql/counter/${dialect}/${.:instance}.conf
+}
