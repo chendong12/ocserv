@@ -211,6 +211,7 @@ iptables -I INPUT -p tcp --dport 1812 -j ACCEPT
 iptables -I INPUT -p udp --dport 1812 -j ACCEPT
 iptables -I INPUT -p tcp --dport 1813 -j ACCEPT
 iptables -I INPUT -p udp --dport 1813 -j ACCEPT' >/etc/rc.d/rc.local
+chmod +x /etc/rc.d/rc.local
 systemctl restart mariadb
 systemctl restart nginx
 systemctl restart php-fpm
