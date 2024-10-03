@@ -107,28 +107,31 @@ cat /etc/ocserv/login.log
 
 ### 使用 let's encrypt 生成域名的证书 ###
 
-```bash
-准备工作：80 端口未被使用，并且防火墙上放行了80端口
+```shell
+#准备工作：80 端口未被使用，并且防火墙上放行了80端口
 
 yum install epel-release
 yum install certbot
 
+#用下面命令生成证书，生成过程提示您输入邮箱地址，然后一路输入 y 确认
 certbot certonly --standalone -d your_domain
+
+#如果成功生成，会提示您证书存放路径，和证书的有效期，示例如下
 
 /etc/letsencrypt/live/your_domain/fullchain.pem
 /etc/letsencrypt/live/your_domain/privkey.pem
 
-修改 ocserv 配置文件
+#修改 ocserv 配置文件，使用证书
 server-cert = /etc/letsencrypt/live/your_domain/fullchain.pem
 server-key = /etc/letsencrypt/live/your_domain/privkey.pem
 
+#重启 ocserv 服务
 systemctl rextart ocserv
 
-Let's Encrypt 证书的有效期是 90 天，并且官方推荐每 60 天 自动进行一次续期，以确保证书不会过期。我们可以利用 Certbot 的内置功能，自动管理证书的续期。
-
-设置 Certbot 自动续期： Certbot 内置了一个命令，用于每天自动检查证书是否即将过期。你可以使用以下 cron 任务来确保 Certbot 每天检查证书状态并续期
-
-这个 cron 任务会每天午夜运行一次 certbot renew，但只有当证书剩余有效期少于 30 天时，Certbot 才会自动续期证书
+#自动更新证书
+#Let's Encrypt 证书的有效期是 90 天，并且官方推荐每 60 天 自动进行一次续期，以确保证书不会过期。
+#Certbot 内置了一个命令，用于每天自动检查证书是否即将过期。你可以使用以下 cron 任务来确保 Certbot 每天检查证书状态并续期
+#这个 cron 任务会每天午夜运行一次 certbot renew，但只有当证书剩余有效期少于 30 天时，Certbot 才会自动续期证书
 
 crontab -e
 
