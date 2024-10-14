@@ -126,7 +126,7 @@ server-cert = /etc/letsencrypt/live/your_domain/fullchain.pem
 server-key = /etc/letsencrypt/live/your_domain/privkey.pem
 
 #重启 ocserv 服务
-systemctl rextart ocserv
+systemctl restart ocserv
 
 #自动更新证书
 #Let's Encrypt 证书的有效期是 90 天，并且官方推荐每 60 天 自动进行一次续期，以确保证书不会过期。
