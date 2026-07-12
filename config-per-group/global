@@ -1,0 +1,9 @@
+dns = 8.8.8.8
+dns = 1.1.1.1
+no-route = 0.0.0.0/8
+no-route = 10.0.0.0/8
+no-route = 100.64.0.0/10
+# Do not add 127.0.0.0/8; some AnyConnect clients fail route validation.
+no-route = 169.254.0.0/16
+no-route = 172.16.0.0/12
+no-route = 192.168.0.0/16
